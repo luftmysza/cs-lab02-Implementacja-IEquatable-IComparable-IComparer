@@ -1,0 +1,15 @@
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\bin\Debug\net6.0\WellFormedType.exe
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\bin\Debug\net6.0\WellFormedType.deps.json
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\bin\Debug\net6.0\WellFormedType.runtimeconfig.json
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\bin\Debug\net6.0\WellFormedType.dll
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\bin\Debug\net6.0\WellFormedType.pdb
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\WellFormedType.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\WellFormedType.AssemblyInfoInputs.cache
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\WellFormedType.AssemblyInfo.cs
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\WellFormedType.csproj.CoreCompileInputs.cache
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\WellFormedType.sourcelink.json
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\WellFormedType.dll
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\refint\WellFormedType.dll
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\WellFormedType.pdb
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\WellFormedType.genruntimeconfig.cache
+C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\obj\Debug\net6.0\ref\WellFormedType.dll
