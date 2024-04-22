@@ -4,6 +4,14 @@
     {
         static void Main()
         {
+            //Krok1();
+            //Krok2();
+            //Krok3();
+            //Krok4();
+            Krok5();
+        }
+        static void Krok1()
+        {
             Console.WriteLine("--- Sprawdzenie poprawności tworzenia obiektu ---");
             Pracownik p = new Pracownik("Kowalski", new DateTime(2010, 10, 1), 1_000);
             Console.WriteLine(p);
@@ -35,41 +43,170 @@
             Console.WriteLine($"Object.ReferenceEquals(p1, p4): {Object.ReferenceEquals(p1, p4)}");
             Console.WriteLine($"p1.Equals(p3): {p1.Equals(p4)}");
             Console.WriteLine($"p1 == p4: {p1 == p4}");
+        }
 
-            List<Pracownik> Pracownicy = new List<Pracownik>
+        static void Krok2()
+        {
+            var lista = new List<Pracownik>();
+            lista.Add(new Pracownik("CCC", new DateTime(2010, 10, 02), 1050));
+            lista.Add(new Pracownik("AAA", new DateTime(2010, 10, 01), 100));
+            lista.Add(new Pracownik("DDD", new DateTime(2010, 10, 03), 2000));
+            lista.Add(new Pracownik("AAA", new DateTime(2011, 10, 01), 1000));
+            lista.Add(new Pracownik("BBB", new DateTime(2010, 10, 01), 1050));
+
+            Console.WriteLine(lista); //wypisze typ, a nie zawartość listy
+
+            Console.WriteLine("-- Wariant 1 --");
+            foreach (var pracownik in lista)
+                Console.WriteLine(pracownik);
+
+            Console.WriteLine("-- Wariant 2 --");
+            lista.ForEach((p) => { Console.Write(p + ","); });
+            Console.WriteLine();
+
+            Console.WriteLine("-- Wariant 3 --");
+            Console.WriteLine(string.Join('\n', lista));
+
+            lista.Sort(); //zadziała, jeśli klasa Pracownik implementuje IComparable<Pracownik>
+
+            Console.WriteLine("Po posortowaniu:");
+            foreach (var pracownik in lista)
+                Console.WriteLine(pracownik);
+        }
+
+        static void Krok3()
+        {
+            var lista = new List<Pracownik>();
+            lista.Add(new Pracownik("CCC", new DateTime(2010, 10, 02), 1050));
+            lista.Add(new Pracownik("AAA", new DateTime(2010, 10, 01), 100));
+            lista.Add(new Pracownik("DDD", new DateTime(2010, 10, 03), 2000));
+            lista.Add(new Pracownik("AAA", new DateTime(2011, 10, 01), 1000));
+            lista.Add(new Pracownik("BBB", new DateTime(2010, 10, 01), 1050));
+
+            Console.WriteLine(lista); //wypisze typ, a nie zawartość listy
+            foreach (var pracownik in lista)
+                System.Console.WriteLine(pracownik);
+
+            Console.WriteLine("--- Zewnętrzny porządek - obiekt typu IComparer" + Environment.NewLine
+                                + "najpierw według czasu zatrudnienia (w miesiącach), " + Environment.NewLine
+                                + "a później według wynagrodzenia - wszystko rosnąco");
+
+            lista.Sort(new WgCzasuZatrudnieniaPotemWgWynagrodzeniaComparer());
+            foreach (var pracownik in lista)
+                System.Console.WriteLine(pracownik);
+
+
+            // ... c.d.
+            Console.WriteLine("--- Zewnętrzny porządek - delegat typu Comparison" + Environment.NewLine
+                                + "najpierw według czasu zatrudnienia (w miesiącach), " + Environment.NewLine
+                                + "a później kolejno według nazwiska i wynagrodzenia - wszystko rosnąco");
+            // sklejamy odpowiednio napisy i je porównujemy
+            lista.Sort((p1, p2) => (p1.CzasZatrudnienia.ToString("D3")
+                                        + p1.Nazwisko + p1.Wynagrodzenie.ToString("00000.00")
+                                    )
+                                    .CompareTo
+                                    (p2.CzasZatrudnienia.ToString("D3")
+                                        + p2.Nazwisko + p2.Wynagrodzenie.ToString("00000.00")
+                                    )
+                        );
+            foreach (var pracownik in lista)
+                System.Console.WriteLine(pracownik);
+
+
+            lista.Sort(delegate (Pracownik one, Pracownik other)
             {
-                new Pracownik ("Sloniak", new DateTime(2010, 10, 1), 1000),
-                new Pracownik ("Jungiewicz", new DateTime(2010, 10, 1), 2500),
-                new Pracownik ("Paterna", new DateTime(2017, 10, 04), 10000),
-                new Pracownik ("Ramirez", new DateTime(2005, 11, 17), 500),
-                new Pracownik ("Niewiedzial", new DateTime(2011, 10, 11), 4000)
+                return
+                (one.CzasZatrudnienia.ToString("D3") + one.Nazwisko + one.Wynagrodzenie.ToString("00000.00")).CompareTo
+                (other.CzasZatrudnienia.ToString("D3") + other.Nazwisko + other.Wynagrodzenie.ToString("00000.00"));
+            });
+
+            // ... c.d.
+            Console.WriteLine("--- Zewnętrzny porządek - delegat typu Comparison" + Environment.NewLine
+                                + "kolejno: malejąco według wynagrodzenia, " + Environment.NewLine
+                                + "później rosnąca według czasu zatrudnienia");
+            //budujemy warunek wyrażeniem warunkowym ()?:
+            lista.Sort((p1, p2) => (p1.Wynagrodzenie != p2.Wynagrodzenie) ?
+                                        (-1) * (p1.Wynagrodzenie.CompareTo(p2.Wynagrodzenie)) :
+                                        p1.CzasZatrudnienia.CompareTo(p2.CzasZatrudnienia)
+                        );
+            foreach (var pracownik in lista)
+                System.Console.WriteLine(pracownik);
+        }
+
+        static void Krok4()
+        {
+            var lista = new List<Pracownik>();
+            lista.Add(new Pracownik("CCC", new DateTime(2010, 10, 02), 1050));
+            lista.Add(new Pracownik("AAA", new DateTime(2010, 10, 01), 100));
+            lista.Add(new Pracownik("DDD", new DateTime(2010, 10, 03), 2000));
+            lista.Add(new Pracownik("AAA", new DateTime(2011, 10, 01), 1000));
+            lista.Add(new Pracownik("BBB", new DateTime(2010, 10, 01), 1050));
+
+            foreach (var pracownik in lista)
+                System.Console.WriteLine(pracownik);
+
+            IOrderedEnumerable<Pracownik> query = lista.OrderBy(pracownik => pracownik.Wynagrodzenie).ThenByDescending(pracownik => pracownik.Nazwisko);
+
+            Console.WriteLine("Po posortowaniu:");
+            foreach (var pracownik in query)
+                System.Console.WriteLine(pracownik);
+        }
+
+        static void Krok5()
+        {
+            var lista = new List<Pracownik>()
+            {
+                new Pracownik("CCC", new DateTime(2010, 10, 02), 1050),
+                new Pracownik("AAA", new DateTime(2010, 10, 01), 100),
+                new Pracownik("DDD", new DateTime(2010, 10, 03), 2000),
+                new Pracownik("AAA", new DateTime(2011, 10, 01), 1000),
+                new Pracownik("BBB", new DateTime(2010, 10, 01), 1050)
             };
 
-            foreach(var pracownik in Pracownicy) Console.WriteLine(pracownik);
+            Console.WriteLine($"Lista pracowników:\n{string.Join('\n', lista)}");
 
-            Pracownicy.Sort();
-            Console.WriteLine($"----");
+            var listaInt = new List<int> { 2, 5, 1, 2, 1, 7, 4, 5 };
+            Console.WriteLine($"Lista liczb: {string.Join(',', listaInt)}");
 
-            foreach (var pracownik in Pracownicy) Console.WriteLine(pracownik);
+            Console.WriteLine("--- Porządkowanie za pomocą własnej metody sortującej" + Environment.NewLine + "zgodnie z naturalnym porządkiem zdefiniowanym w klasie Pracownik ---");
+
+            Sortowanie.Sortuj(lista);
+            Console.WriteLine(string.Join('\n', lista));
+
+            listaInt.Sortuj();
+            Console.WriteLine(string.Join(',', listaInt));
+
+            lista.Sort();
 
 
-            Console.WriteLine('a' < 'b');
+            // zewnętrzny porządek - obiekt IComparer
 
-            //List<string> Pracownicy1 = new List<string>
-            //{
-            //    "Sloniak",
-            //    "Jungiewicz",
-            //    "Paterna", 
-            //    "Ramirez",
-            //    "Niewiedzial"
-            //};
 
-            //foreach (var pracownik in Pracownicy1) Console.WriteLine(pracownik);
+            Console.WriteLine("--- Porządkowanie za pomocą własnej metody sortującej" + Environment.NewLine
+                + "zgodnie z porządkiem zdefiniowanym w klasie typu IComparer ---");
 
-            //Pracownicy1.Sort();
-            //Console.WriteLine($"----");
+            Sortowanie.Sortuj(lista, new WgCzasuZatrudnieniaPotemWgWynagrodzeniaComparer());
+            Console.WriteLine(string.Join('\n', lista));
 
-            //foreach (var pracownik in Pracownicy1) Console.WriteLine(pracownik);
+            listaInt.Sortuj(new MyIntComparer());
+            Console.WriteLine(string.Join(',', listaInt));
+
+            // zewnętrzny porządek - delegat Comparison
+            Console.WriteLine("--- Porządkowanie za pomocą własnej metody sortującej" + Environment.NewLine
+                + "zgodnie z porządkiem zdefiniowanym przez delegat Comparison ---");
+            Comparison<Pracownik> porownywacz
+                = (p1, p2) => (p1.Wynagrodzenie != p2.Wynagrodzenie) ?
+                    (-1) * (p1.Wynagrodzenie.CompareTo(p2.Wynagrodzenie)) :
+                    p1.CzasZatrudnienia.CompareTo(p2.CzasZatrudnienia);
+            Sortowanie.Sortuj(lista, porownywacz); // wywołanie metody "tradycyjnie"
+            Console.WriteLine(string.Join('\n', lista));
+
+            listaInt.Sortuj((x, y) => y - x); // wywołanie jako metody rozszerzajacej
+            Console.WriteLine(string.Join(',', listaInt));
+        }
+        private class MyIntComparer : IComparer<int>
+        {
+            public int Compare(int x, int y) => (y - x); // malejąco
         }
     } 
 }

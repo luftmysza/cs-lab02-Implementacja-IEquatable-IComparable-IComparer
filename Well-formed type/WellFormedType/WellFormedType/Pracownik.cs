@@ -119,7 +119,7 @@ namespace WellFormedType
             }
             return 0;
 
-            int StringComparer(string given, string other)
+            static int StringComparer(string given, string other)
             {
                 
                 string shorter;

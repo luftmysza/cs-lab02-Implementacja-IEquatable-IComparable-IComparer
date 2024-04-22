@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NjRcq00QP5zyoOF46hh9kda3tva0uE4EENNEeydzlM5c6Q25CBl0tVn/dxJBBqHs76MXM6g0DUFrZfsfiEATbw==",
+  "dgSpecHash": "BRDksg3FsAhxNZelFyUnxzCxBJuoM4cdHlRRqhD8fOxfEJO5qc9KLcqvIPj2wK273QclCNfZOy4oz6vHXLme7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\drboo\\Desktop\\CS\\Programowanie obiektowe\\Well-formed type\\WellFormedType\\WellFormedType\\WellFormedType.csproj",
+  "projectFilePath": "C:\\Users\\drboo\\Desktop\\Well-formed Type\\cs-lab02-Implementacja-IEquatable-IComparable-IComparer\\Well-formed type\\WellFormedType\\WellFormedType\\WellFormedType.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

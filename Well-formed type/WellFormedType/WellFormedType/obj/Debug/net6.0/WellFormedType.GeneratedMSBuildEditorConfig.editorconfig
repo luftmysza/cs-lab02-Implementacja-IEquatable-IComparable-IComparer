@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WellFormedType
-build_property.ProjectDir = C:\Users\drboo\Desktop\CS\Programowanie obiektowe\Well-formed type\WellFormedType\WellFormedType\
+build_property.ProjectDir = C:\Users\drboo\Desktop\Well-formed Type\cs-lab02-Implementacja-IEquatable-IComparable-IComparer\Well-formed type\WellFormedType\WellFormedType\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

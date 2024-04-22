@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WellFormedType")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05f3bfe33f6950981e9600562ef6f44ed2a40c85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f93bffba02522497aabeed310ae50206600d288")]
 [assembly: System.Reflection.AssemblyProductAttribute("WellFormedType")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WellFormedType")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
