@@ -8,7 +8,8 @@
             //Krok2();
             //Krok3();
             //Krok4();
-            Krok5();
+            //Krok5();
+            Krok6();
         }
         static void Krok1()
         {
@@ -207,6 +208,34 @@
         private class MyIntComparer : IComparer<int>
         {
             public int Compare(int x, int y) => (y - x); // malejąco
+        }
+
+        static void Krok6()
+        {
+            var lista = new List<Pracownik>()
+            {
+                new Pracownik("CCC", new DateTime(2010, 10, 02), 1050),
+                new Pracownik("AAA", new DateTime(2010, 10, 01), 100),
+                new Pracownik("DDD", new DateTime(2010, 10, 03), 2000),
+                new Pracownik("AAA", new DateTime(2011, 10, 01), 1000),
+                new Pracownik("BBB", new DateTime(2010, 10, 01), 1050)
+            };
+
+            foreach (var pracownik in lista)
+                System.Console.WriteLine(pracownik);
+
+            int z = Array.BinarySearch(lista.ToArray(), new Pracownik("BBB", new DateTime(2010, 10, 01), 1050));
+            Console.WriteLine(z);
+
+            lista.Sortuj();
+
+            foreach (var pracownik in lista)
+                System.Console.WriteLine(pracownik);
+
+            int x = Array.BinarySearch(lista.ToArray(), new Pracownik("BBB", new DateTime(2010, 10, 01), 1050));
+            Console.WriteLine(x);
+            int y = lista.BinarySearch(new Pracownik("BBB", new DateTime(2010, 10, 01), 1050));
+            Console.WriteLine(y);
         }
     } 
 }
